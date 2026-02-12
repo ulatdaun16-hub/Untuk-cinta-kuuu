@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You 🤍</title>
+<title>For You ❤️❤️❤️</title>
 
 <style>
 body {
@@ -22,7 +22,7 @@ section {
     display: none;
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
     font-weight: 500;
 }
@@ -59,7 +59,7 @@ input {
     padding: 12px;
     border-radius: 12px;
     border: none;
-    width: 230px;
+    width: 240px;
     text-align: center;
     font-size: 16px;
     margin-bottom: 15px;
@@ -78,6 +78,13 @@ input {
     margin-top: 30px;
     line-height: 1.9;
     font-size: 17px;
+}
+
+/* FLOWER TEXT */
+.flower-text {
+    font-size: 20px;
+    margin-bottom: 30px;
+    animation: fade 2s forwards;
 }
 
 /* DOLLS */
@@ -124,21 +131,28 @@ input {
 
 <!-- PASSWORD -->
 <div id="passwordPage">
-    <h2>Masukkan tanggal jadian kita 🤍</h2>
-    <input id="passwordInput" placeholder="30 Desember 2026">
+    <h2>Masukkan tanggal jadian kita ❤️❤️❤️</h2>
+    <input id="passwordInput" placeholder="tanggal yang cuma kita ingat">
     <button onclick="checkPassword()">Masuk</button>
     <div id="error" class="error"></div>
 </div>
 
 <!-- WELCOME -->
 <section id="welcome">
-    <h1 class="fade">Selamat datang di tempat paling tenang 🤍</h1>
+    <h1 class="fade">Selamat datang sayangg kuuuuu ❤️❤️❤️</h1>
 </section>
 
 <!-- HERO -->
 <section id="hero">
     <h1>Happy Valentine</h1>
-    <h2>My Safe Place 🤍</h2>
+    <h2>My Safe Place ❤️❤️❤️</h2>
+</section>
+
+<!-- FLOWER TEXT -->
+<section id="flower" class="center">
+    <h3 class="flower-text">
+        ini bunga buat kamu sayang kuuu ❤️❤️❤️
+    </h3>
 </section>
 
 <!-- VIDEO -->
@@ -150,23 +164,23 @@ input {
 
 <!-- MESSAGE -->
 <section id="message" class="center">
-    <button id="openBtn" onclick="startMessages()">Aku mau bilang sesuatu 🤍</button>
+    <button id="openBtn" onclick="startMessages()">Aku mau bilang sesuatu ❤️❤️❤️</button>
     <div id="typing" class="message" style="display:none;"></div>
 
     <div class="ending">
         Aku nggak janji dunia akan selalu baik.<br>
         Tapi aku janji,<br>
-        kamu nggak akan sendirian 🤍
+        kamu nggak akan sendirian ❤️❤️❤️
     </div>
 </section>
 
 <!-- CLOSING -->
 <section id="closing">
-    <h1 class="center">Still you. Always you.</h1>
+    <h1 class="center">Still you. Always you. ❤️❤️❤️</h1>
 </section>
 
 <script>
-const sections = ["welcome","hero","videoSection","message","closing"];
+const sections = ["welcome","hero","flower","videoSection","message","closing"];
 
 function checkPassword() {
     const input = document.getElementById("passwordInput").value.toLowerCase();
@@ -182,7 +196,7 @@ function checkPassword() {
         spawnDolls();
     } else {
         document.getElementById("error").innerText =
-            "Coba ingat lagi tanggal yang paling kita jaga 🤍";
+            "Coba ingat lagi tanggal yang paling kita jaga ❤️❤️❤️";
     }
 }
 
@@ -204,7 +218,7 @@ const messages = [
 "",
 "Di dekatku kamu nggak perlu pura-pura kuat.",
 "",
-"Selama kamu masih mau melangkah, aku akan tetap di sini 🤍"
+"Selama kamu masih mau melangkah, aku akan tetap di sini ❤️❤️❤️"
 ];
 
 let msgIndex = 0;
