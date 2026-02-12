@@ -1,257 +1,197 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Valentine 🤍</title>
+  <meta charset="UTF-8">
+  <title>Untuk Kamu 🤍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-    margin:0;
-    font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(180deg,#fde2e4,#fff1f2);
-    color:#5b1f2e;
-    overflow-x:hidden;
-}
-section{
-    padding:70px 20px;
-    max-width:900px;
-    margin:auto;
-    display:none;
-}
-h1,h2{text-align:center}
-.center{text-align:center}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #ffe4ec, #fff);
+      color: #5a2a3c;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-button{
-    background:#f4a3b5;
-    color:white;
-    border:none;
-    padding:14px 36px;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-}
-button:hover{background:#f08096}
+    /* ================= PASSWORD ================= */
+    #passwordScreen {
+      position: fixed;
+      inset: 0;
+      background: #ffe4ec;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
 
-/* PULSE */
-.pulse{
-    animation:pulse 1.8s infinite;
-}
-@keyframes pulse{
-    0%{transform:scale(1);box-shadow:0 0 0 0 rgba(244,163,181,.6)}
-    70%{transform:scale(1.05);box-shadow:0 0 0 18px rgba(244,163,181,0)}
-    100%{transform:scale(1)}
-}
+    input {
+      padding: 12px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #f3a4c5;
+      text-align: center;
+      outline: none;
+    }
 
-/* PASSWORD */
-#passwordPage{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-}
-input{
-    padding:12px;
-    border-radius:10px;
-    border:none;
-    width:240px;
-    text-align:center;
-    font-size:16px;
-    margin-bottom:15px;
-}
-.error{color:#c9184a}
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background: #ff9ebc;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      animation: blink 1.5s infinite;
+    }
 
-/* MESSAGE */
-.message{
-    background:rgba(255,255,255,.7);
-    padding:25px;
-    border-radius:18px;
-    margin-bottom:25px;
-    line-height:1.9;
-}
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
 
-/* DOLL */
-.doll{
-    position:fixed;
-    top:-80px;
-    font-size:52px;
-    animation:fall linear forwards;
-    opacity:.8;
-    pointer-events:none;
-}
-@keyframes fall{
-    to{transform:translateY(110vh);opacity:0}
-}
+    /* ================= AMPL0P ================= */
+    #envelope {
+      width: 260px;
+      height: 180px;
+      margin: 60px auto 20px;
+      position: relative;
+      cursor: pointer;
+      animation: blink 2s infinite;
+    }
 
-/* ENVELOPE */
-.envelope{
-    width:280px;
-    height:180px;
-    margin:30px auto;
-    position:relative;
-    cursor:pointer;
-    overflow:hidden;
-    border-radius:0 0 18px 18px;
-    box-shadow:0 12px 30px rgba(244,163,181,.4);
-    background:
-        radial-gradient(circle at 20% 30%, #fff 6%, transparent 7%),
-        radial-gradient(circle at 70% 60%, #fff 6%, transparent 7%),
-        radial-gradient(circle at 40% 80%, #fff 6%, transparent 7%),
-        #f8c8dc;
-}
+    .envelope-body {
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        #ffb6cc,
+        #ffb6cc 15px,
+        #ffd1df 15px,
+        #ffd1df 30px
+      );
+      border-radius: 15px;
+      position: absolute;
+      bottom: 0;
+    }
 
-.envelope::before{
-    content:"🤍 🤍 🤍";
-    position:absolute;
-    top:12px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:14px;
-    opacity:.6;
-    animation:floatHearts 3s infinite alternate;
-}
+    .heart {
+      position: absolute;
+      font-size: 26px;
+      color: #ff4d88;
+      animation: float 4s infinite;
+    }
 
-@keyframes floatHearts{
-    from{transform:translateX(-50%) translateY(0)}
-    to{transform:translateX(-50%) translateY(6px)}
-}
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-80px); opacity: 0; }
+    }
 
-.envelope-top{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#f4a3b5;
-    clip-path:polygon(0 0,100% 0,50% 55%);
-    transform-origin:top;
-    transition:transform 1s ease;
-    z-index:3;
-}
+    /* ================= VIDEO ================= */
+    #videoBox {
+      max-width: 320px;
+      margin: 0 auto;
+      display: none;
+      animation: slideUp 1.5s ease forwards;
+    }
 
-.letter{
-    position:absolute;
-    bottom:-160px;
-    left:10px;
-    width:calc(100% - 20px);
-    background:white;
-    border-radius:12px;
-    padding:8px;
-    transition:bottom 1.2s ease;
-    z-index:2;
-}
+    @keyframes slideUp {
+      from { transform: translateY(150px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
 
-.envelope.open .envelope-top{
-    transform:rotateX(160deg);
-}
-.envelope.open .letter{
-    bottom:10px;
-}
-</style>
+    video {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    /* ================= BONEKA ================= */
+    .teddy {
+      font-size: 90px;
+      margin-top: 30px;
+      animation: float 3s infinite;
+    }
+
+    /* ================= PESAN ================= */
+    .message {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff0f6;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- AUDIO -->
-<audio id="bgMusic" loop>
-    <source src="piano.mp3" type="audio/mpeg">
-</audio>
-
 <!-- PASSWORD -->
-<div id="passwordPage">
-    <h2>Masukkan tanggal jadian kita 🤍</h2>
-    <input id="passwordInput" placeholder="30 Desember 2026">
-    <button class="pulse" onclick="checkPassword()">Masuk</button>
-    <div id="error" class="error"></div>
+<div id="passwordScreen">
+  <h2>Masukkan Tanggal Jadian 🤍</h2>
+  <p>Format: 30desember2026</p>
+  <input id="passwordInput" placeholder="••••••••••">
+  <button onclick="checkPassword()">Masuk</button>
 </div>
 
-<!-- MUSIC -->
-<section id="musicSection" class="center">
-    <button id="playMusicBtn" class="pulse" onclick="playMusic()">
-        🎹 Putar musik pelan-pelan
-    </button>
-</section>
+<!-- KONTEN -->
+<div id="content" style="display:none;">
+  
+  <!-- AMPL0P -->
+  <div id="envelope" onclick="openEnvelope()">
+    <div class="envelope-body"></div>
+    <div class="heart" style="top:70px;left:110px;">❤️</div>
+  </div>
 
-<!-- HERO -->
-<section id="hero">
-    <h1>Happy Valentine, My Favorite Person 🤍</h1>
-</section>
+  <!-- VIDEO -->
+  <div id="videoBox">
+    <video controls>
+      <source src="video-valentine.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<!-- ENVELOPE + VIDEO -->
-<section id="envelopeSection" class="center">
-    <h2>Buka surat kecil ini 🤍</h2>
+  <!-- BONEKA -->
+  <div class="teddy">🧸</div>
 
-    <div class="envelope pulse" onclick="openEnvelope()">
-        <div class="envelope-top"></div>
-        <div class="letter">
-            <video id="video" width="100%" controls>
-                <source src="video-valentine.mp4" type="video/mp4">
-            </video>
-        </div>
-    </div>
-</section>
+  <!-- PESAN 1 -->
+  <div class="message">
+    Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.
+    Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang.
+    Mungkin aku nggak selalu bilang, tapi aku bersyukur banget punya kamu yang setia nemenin,
+    dengerin, dan nggak pernah lelah nguatkan.
+    Semoga kita tetap jalan bareng, pelan-pelan tapi pasti 🤍
+  </div>
 
-<!-- MESSAGE -->
-<section id="message">
-    <div class="message">
-        Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.
-        Kehadiranmu itu sederhana, tapi selalu bikin tenang 🤍
-    </div>
-    <div class="message">
-        Kalau dunia terasa terlalu ramai dan melelahkan, pulanglah…
-        aku akan selalu jadi tempatmu kembali 🤍
-    </div>
-</section>
+  <!-- PESAN 2 -->
+  <div class="message">
+    Kalau dunia terasa berat buat kamu, ingat ya… aku akan selalu ada jadi tempatmu pulang.
+    Jadi sandaran saat lelah, jadi tenang di tengah ributnya hidupmu.
+    Kamu nggak harus kuat sendirian, karena ada aku yang akan tetap di sini,
+    nemenin kamu apa pun keadaannya 🤍
+  </div>
 
-<!-- CLOSING -->
-<section id="closing">
-    <h1 class="center">Still you. Always you.</h1>
-</section>
+</div>
 
 <script>
-const sections=["musicSection","hero","envelopeSection","message","closing"];
-
-function checkPassword(){
-    const val=document.getElementById("passwordInput").value.toLowerCase();
-    if(val==="30 desember 2026"||val==="30-12-2026"){
-        document.getElementById("passwordPage").style.display="none";
-        sections.forEach((id,i)=>{
-            setTimeout(()=>document.getElementById(id).style.display="block",i*800);
-        });
-        startDolls();
-    }else{
-        document.getElementById("error").innerText="Coba ingat lagi tanggal spesial kita 🤍";
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value.toLowerCase();
+    if (input === "30desember2026") {
+      document.getElementById("passwordScreen").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      alert("Tanggalnya salah 🤍");
     }
-}
+  }
 
-function playMusic(){
-    const music=document.getElementById("bgMusic");
-    music.volume=0.4;
-    music.play().then(()=>{
-        document.getElementById("playMusicBtn").style.display="none";
-    });
-}
-
-function openEnvelope(){
-    const env=document.querySelector(".envelope");
-    env.classList.remove("pulse");
-    env.classList.add("open");
-}
-
-function startDolls(){
-    setInterval(()=>{
-        const doll=document.createElement("div");
-        const dolls=["🧸","🤍","🎀"];
-        doll.className="doll";
-        doll.innerText=dolls[Math.floor(Math.random()*dolls.length)];
-        doll.style.left=Math.random()*100+"vw";
-        doll.style.fontSize=(42+Math.random()*28)+"px";
-        doll.style.animationDuration=(14+Math.random()*10)+"s";
-        document.body.appendChild(doll);
-        setTimeout(()=>doll.remove(),20000);
-    },1200);
-}
+  function openEnvelope() {
+    document.getElementById("videoBox").style.display = "block";
+  }
 </script>
 
 </body>
