@@ -1,197 +1,250 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Untuk Kamu 🤍</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 🤍</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(180deg, #ffe4ec, #fff);
-      color: #5a2a3c;
-      text-align: center;
-      overflow-x: hidden;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #fde2ea, #f7b7c9);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #6b2138;
+}
 
-    /* ================= PASSWORD ================= */
-    #passwordScreen {
-      position: fixed;
-      inset: 0;
-      background: #ffe4ec;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
+section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: auto;
+    display: none;
+}
 
-    input {
-      padding: 12px;
-      font-size: 18px;
-      border-radius: 10px;
-      border: 1px solid #f3a4c5;
-      text-align: center;
-      outline: none;
-    }
+h1, h2 {
+    text-align: center;
+    font-weight: 500;
+}
 
-    button {
-      margin-top: 15px;
-      padding: 12px 25px;
-      font-size: 16px;
-      background: #ff9ebc;
-      border: none;
-      border-radius: 20px;
-      color: white;
-      cursor: pointer;
-      animation: blink 1.5s infinite;
-    }
+.center {
+    text-align: center;
+}
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+button {
+    background: #f38ba0;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    /* ================= AMPL0P ================= */
-    #envelope {
-      width: 260px;
-      height: 180px;
-      margin: 60px auto 20px;
-      position: relative;
-      cursor: pointer;
-      animation: blink 2s infinite;
-    }
+button:hover {
+    background: #ec6f8e;
+}
 
-    .envelope-body {
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        45deg,
-        #ffb6cc,
-        #ffb6cc 15px,
-        #ffd1df 15px,
-        #ffd1df 30px
-      );
-      border-radius: 15px;
-      position: absolute;
-      bottom: 0;
-    }
+/* PASSWORD */
+#passwordPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .heart {
-      position: absolute;
-      font-size: 26px;
-      color: #ff4d88;
-      animation: float 4s infinite;
-    }
+input {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    width: 230px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-80px); opacity: 0; }
-    }
+.error {
+    color: #b91c1c;
+    margin-top: 10px;
+}
 
-    /* ================= VIDEO ================= */
-    #videoBox {
-      max-width: 320px;
-      margin: 0 auto;
-      display: none;
-      animation: slideUp 1.5s ease forwards;
-    }
+/* MESSAGE */
+.message {
+    background: rgba(255,255,255,0.35);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+    line-height: 1.9;
+    font-size: 17px;
+}
 
-    @keyframes slideUp {
-      from { transform: translateY(150px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+/* DOLLS */
+.doll {
+    position: fixed;
+    top: -40px;
+    font-size: 28px;
+    animation: fall linear forwards;
+    opacity: 0.7;
+}
 
-    video {
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
     }
+}
 
-    /* ================= BONEKA ================= */
-    .teddy {
-      font-size: 90px;
-      margin-top: 30px;
-      animation: float 3s infinite;
-    }
+/* FADE */
+.fade {
+    animation: fade 2s forwards;
+}
 
-    /* ================= PESAN ================= */
-    .message {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff0f6;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-      line-height: 1.8;
-      font-size: 16px;
-    }
-  </style>
+@keyframes fade {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* ENDING */
+.ending {
+    margin-top: 60px;
+    font-size: 16px;
+    opacity: 0;
+    animation: fadeIn 6s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+</style>
 </head>
 
 <body>
 
 <!-- PASSWORD -->
-<div id="passwordScreen">
-  <h2>Masukkan Tanggal Jadian 🤍</h2>
-  <p>Format: 30desember2026</p>
-  <input id="passwordInput" placeholder="••••••••••">
-  <button onclick="checkPassword()">Masuk</button>
+<div id="passwordPage">
+    <h2>Masukkan tanggal jadian kita 🤍</h2>
+    <input id="passwordInput" placeholder="30 Desember 2026">
+    <button onclick="checkPassword()">Masuk</button>
+    <div id="error" class="error"></div>
 </div>
 
-<!-- KONTEN -->
-<div id="content" style="display:none;">
-  
-  <!-- AMPL0P -->
-  <div id="envelope" onclick="openEnvelope()">
-    <div class="envelope-body"></div>
-    <div class="heart" style="top:70px;left:110px;">❤️</div>
-  </div>
+<!-- WELCOME -->
+<section id="welcome">
+    <h1 class="fade">Selamat datang di tempat paling tenang 🤍</h1>
+</section>
 
-  <!-- VIDEO -->
-  <div id="videoBox">
-    <video controls>
-      <source src="video-valentine.mp4" type="video/mp4">
+<!-- HERO -->
+<section id="hero">
+    <h1>Happy Valentine</h1>
+    <h2>My Safe Place 🤍</h2>
+</section>
+
+<!-- VIDEO -->
+<section id="videoSection" class="center">
+    <video id="video" width="100%" controls>
+        <source src="video-valentine.mp4" type="video/mp4">
     </video>
-  </div>
+</section>
 
-  <!-- BONEKA -->
-  <div class="teddy">🧸</div>
+<!-- MESSAGE -->
+<section id="message" class="center">
+    <button id="openBtn" onclick="startMessages()">Aku mau bilang sesuatu 🤍</button>
+    <div id="typing" class="message" style="display:none;"></div>
 
-  <!-- PESAN 1 -->
-  <div class="message">
-    Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.
-    Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang.
-    Mungkin aku nggak selalu bilang, tapi aku bersyukur banget punya kamu yang setia nemenin,
-    dengerin, dan nggak pernah lelah nguatkan.
-    Semoga kita tetap jalan bareng, pelan-pelan tapi pasti 🤍
-  </div>
+    <div class="ending">
+        Aku nggak janji dunia akan selalu baik.<br>
+        Tapi aku janji,<br>
+        kamu nggak akan sendirian 🤍
+    </div>
+</section>
 
-  <!-- PESAN 2 -->
-  <div class="message">
-    Kalau dunia terasa berat buat kamu, ingat ya… aku akan selalu ada jadi tempatmu pulang.
-    Jadi sandaran saat lelah, jadi tenang di tengah ributnya hidupmu.
-    Kamu nggak harus kuat sendirian, karena ada aku yang akan tetap di sini,
-    nemenin kamu apa pun keadaannya 🤍
-  </div>
-
-</div>
+<!-- CLOSING -->
+<section id="closing">
+    <h1 class="center">Still you. Always you.</h1>
+</section>
 
 <script>
-  function checkPassword() {
-    const input = document.getElementById("passwordInput").value.toLowerCase();
-    if (input === "30desember2026") {
-      document.getElementById("passwordScreen").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    } else {
-      alert("Tanggalnya salah 🤍");
-    }
-  }
+const sections = ["welcome","hero","videoSection","message","closing"];
 
-  function openEnvelope() {
-    document.getElementById("videoBox").style.display = "block";
-  }
+function checkPassword() {
+    const input = document.getElementById("passwordInput").value.toLowerCase();
+    const correct = ["30 desember 2026", "30-12-2026"];
+
+    if (correct.includes(input)) {
+        document.getElementById("passwordPage").style.display = "none";
+        sections.forEach((id, i) => {
+            setTimeout(() => {
+                document.getElementById(id).style.display = "block";
+            }, i * 900);
+        });
+        spawnDolls();
+    } else {
+        document.getElementById("error").innerText =
+            "Coba ingat lagi tanggal yang paling kita jaga 🤍";
+    }
+}
+
+/* TYPING MESSAGE */
+const messages = [
+"Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.",
+"",
+"Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang.",
+"",
+"Mungkin aku nggak selalu bilang, tapi aku bersyukur banget punya kamu.",
+"",
+"Sayang, kalau dunia terasa terlalu ramai dan melelahkan buat kamu…",
+"",
+"Pulanglah.",
+"",
+"Aku akan selalu jadi tempatmu kembali.",
+"",
+"Di pundakku kamu boleh rapuh.",
+"",
+"Di dekatku kamu nggak perlu pura-pura kuat.",
+"",
+"Selama kamu masih mau melangkah, aku akan tetap di sini 🤍"
+];
+
+let msgIndex = 0;
+
+function startMessages() {
+    document.getElementById("openBtn").style.display = "none";
+    document.getElementById("typing").style.display = "block";
+    showMessage();
+}
+
+function showMessage() {
+    if (msgIndex >= messages.length) return;
+    const box = document.getElementById("typing");
+    box.innerHTML = "";
+    let text = messages[msgIndex];
+    let i = 0;
+
+    const typing = setInterval(() => {
+        box.innerHTML += text.charAt(i);
+        i++;
+        if (i >= text.length) {
+            clearInterval(typing);
+            msgIndex++;
+            setTimeout(showMessage, 1800);
+        }
+    }, 40);
+}
+
+/* DOLLS */
+function spawnDolls() {
+    setInterval(() => {
+        const doll = document.createElement("div");
+        doll.className = "doll";
+        doll.innerText = "🧸";
+        doll.style.left = Math.random() * 100 + "vw";
+        doll.style.animationDuration = (12 + Math.random() * 8) + "s";
+        document.body.appendChild(doll);
+        setTimeout(() => doll.remove(), 20000);
+    }, 900);
+}
 </script>
 
 </body>
