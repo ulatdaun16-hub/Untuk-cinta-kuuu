@@ -6,127 +6,119 @@
 <title>Happy Valentine 🤍</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: #0f172a;
-        color: #e5e7eb;
-        overflow-x: hidden;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
-    section {
-        padding: 60px 20px;
-        max-width: 900px;
-        margin: auto;
-        display: none;
-    }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #fde2ea, #f7b7c9);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #6b2138;
+}
 
-    h1, h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: auto;
+    display: none;
+}
 
-    .center {
-        text-align: center;
-    }
+h1, h2 {
+    text-align: center;
+    font-weight: 400;
+}
 
-    button {
-        background: #ef4444;
-        color: white;
-        border: none;
-        padding: 12px 28px;
-        border-radius: 25px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.center {
+    text-align: center;
+}
 
-    button:hover {
-        background: #dc2626;
-    }
+button {
+    background: #f4a3b5;
+    color: #6b2138;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    /* PASSWORD */
-    #passwordPage {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+button:hover {
+    background: #f28aa4;
+}
 
-    input {
-        padding: 12px;
-        border-radius: 8px;
-        border: none;
-        width: 220px;
-        text-align: center;
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
+/* PASSWORD */
+#passwordPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .error {
-        color: #fca5a5;
-        margin-top: 10px;
-    }
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    width: 240px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
-    /* FADE */
-    .fade {
-        animation: fade 1.5s forwards;
-    }
+.error {
+    color: #9b1c31;
+    margin-top: 10px;
+}
 
-    @keyframes fade {
-        from {opacity: 0; transform: translateY(20px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
+/* MESSAGE */
+.message {
+    background: rgba(255,255,255,0.35);
+    padding: 30px;
+    border-radius: 20px;
+    line-height: 1.9;
+    font-size: 16px;
+}
 
-    /* MESSAGE */
-    .message {
-        background: rgba(255,255,255,0.05);
-        padding: 25px;
-        border-radius: 15px;
-        margin-bottom: 25px;
-        line-height: 1.8;
-    }
+/* ENDING */
+.ending {
+    margin-top: 60px;
+    font-size: 16px;
+    opacity: 0;
+    animation: fadeIn 6s forwards;
+}
 
-    /* REASONS */
-    .reasons {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-        gap: 15px;
-    }
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
 
-    .card {
-        background: rgba(255,255,255,0.05);
-        padding: 20px;
-        border-radius: 15px;
-        transition: 0.3s;
-    }
+/* DOLLS */
+.doll {
+    position: fixed;
+    top: -40px;
+    font-size: 28px;
+    animation: fall linear forwards;
+    opacity: 0.7;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        background: rgba(255,255,255,0.1);
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
     }
-
-    /* HEARTS */
-    .heart {
-        position: fixed;
-        top: -10px;
-        font-size: 20px;
-        animation: fall linear forwards;
-    }
-
-    @keyframes fall {
-        to {
-            transform: translateY(110vh);
-            opacity: 0;
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- PASSWORD PAGE -->
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="piano.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PASSWORD -->
 <div id="passwordPage">
     <h2>Masukkan tanggal jadian kita 🤍</h2>
     <input id="passwordInput" placeholder="30 Desember 2026">
@@ -136,18 +128,7 @@
 
 <!-- WELCOME -->
 <section id="welcome">
-    <h1 class="fade">Selamat datang di tempat paling aman 🤍</h1>
-</section>
-
-<!-- COUNTDOWN -->
-<section id="countdownSection">
-    <h2>Menuju hari kecil yang penuh arti untuk kita</h2>
-    <h1 id="countdown"></h1>
-</section>
-
-<!-- HERO -->
-<section id="hero">
-    <h1>Happy Valentine, My Favorite Person ❤️</h1>
+    <h1>Selamat datang di tempat paling aman 🤍</h1>
 </section>
 
 <!-- VIDEO -->
@@ -158,101 +139,103 @@
 </section>
 
 <!-- MESSAGE -->
-<section id="message">
-    <div class="message fade">
-        Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.
-        Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang. Mungkin aku nggak selalu bilang,
-        tapi aku bersyukur banget punya kamu yang setia nemenin, dengerin, dan nggak pernah lelah
-        nguatkan. Semoga kita tetap jalan bareng, pelan-pelan tapi pasti 🤍
+<section id="message" class="center">
+    <button id="openBtn" onclick="startMessages()">Aku punya sesuatu 🤍</button>
+    <div id="typing" class="message" style="display:none;"></div>
+
+    <div class="ending">
+        Aku nggak janji dunia akan selalu baik.<br>
+        Tapi aku janji,<br>
+        kamu nggak akan sendirian 🤍
     </div>
-
-    <div class="message fade">
-        Sayang, kalau dunia terasa terlalu ramai dan melelahkan buat kamu, pulanglah… aku akan selalu
-        jadi tempatmu kembali. Di pundakku kamu boleh rapuh, di dekatku kamu nggak perlu pura-pura kuat.
-        Aku ingin jadi rumah yang selalu kamu cari, tempat hatimu istirahat setelah panjangnya perjalanan.
-        Selama kamu masih mau melangkah, aku akan tetap di sini — jadi sandaran, jadi tenang, dan jadi
-        seseorang yang mencintaimu tanpa syarat 🤍
-    </div>
-</section>
-
-<!-- REASONS -->
-<section id="reasons">
-    <h2>Reasons Why I Love You</h2>
-    <div class="reasons">
-        <div class="card">Kamu selalu ada</div>
-        <div class="card">Kamu sabar</div>
-        <div class="card">Kamu bikin aku tenang</div>
-        <div class="card">Kamu mau dengerin</div>
-        <div class="card">Kamu adalah rumah</div>
-    </div>
-</section>
-
-<!-- SURPRISE -->
-<section id="surprise" class="center">
-    <h2>Terima kasih sudah bertahan sejauh ini.<br>Aku bangga sama kamu 🤍</h2>
-</section>
-
-<!-- CLOSING -->
-<section id="closing">
-    <h1 class="center">Still you. Always you.</h1>
 </section>
 
 <script>
-    const mainSections = [
-        "welcome","countdownSection","hero",
-        "videoSection","message","reasons","surprise","closing"
-    ];
+const sections = ["welcome","videoSection","message"];
 
-    function checkPassword() {
-        const input = document.getElementById("passwordInput").value.toLowerCase();
-        const correct = ["30 desember 2026", "30-12-2026"];
+function checkPassword() {
+    const input = document.getElementById("passwordInput").value.toLowerCase();
+    const correct = ["30 desember 2026","30-12-2026"];
 
-        if (correct.includes(input)) {
-            document.getElementById("passwordPage").style.display = "none";
-            showSections();
-        } else {
-            document.getElementById("error").innerText = "Coba ingat lagi tanggal spesial kita 🤍";
-        }
-    }
-
-    function showSections() {
-        mainSections.forEach((id, i) => {
-            setTimeout(() => {
-                document.getElementById(id).style.display = "block";
-            }, i * 800);
+    if (correct.includes(input)) {
+        document.getElementById("passwordPage").style.display = "none";
+        sections.forEach((id,i)=>{
+            setTimeout(()=>document.getElementById(id).style.display="block", i*900);
         });
+
+        const music = document.getElementById("bgMusic");
+        music.volume = 0.35;
+        music.play();
+
+        startDolls();
+    } else {
+        document.getElementById("error").innerText = "Coba ingat lagi tanggal spesial kita 🤍";
     }
+}
 
-    // COUNTDOWN
-    const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
+const messages = [
+"Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.",
+"",
+"Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang.",
+"",
+"Mungkin aku nggak selalu bilang, tapi aku bersyukur banget punya kamu.",
+"",
+"Kalau dunia terasa terlalu ramai dan melelahkan buat kamu…",
+"",
+"Pulanglah.",
+"",
+"Aku akan selalu jadi tempatmu kembali.",
+"",
+"Di pundakku kamu boleh rapuh.",
+"",
+"Di dekatku kamu nggak perlu pura-pura kuat.",
+"",
+"Selama kamu masih mau melangkah, aku akan tetap di sini 🤍"
+];
+
+let msgIndex = 0;
+
+function startMessages() {
+    document.getElementById("openBtn").style.display = "none";
+    const box = document.getElementById("typing");
+    box.style.display = "block";
+    showMessage();
+}
+
+function showMessage() {
+    if (msgIndex >= messages.length) return;
+    const box = document.getElementById("typing");
+    box.innerHTML = "";
+    let text = messages[msgIndex];
+    let i = 0;
+
+    const typing = setInterval(() => {
+        box.innerHTML += text.charAt(i);
+        i++;
+        if (i >= text.length) {
+            clearInterval(typing);
+            msgIndex++;
+            setTimeout(showMessage, 1800);
+        }
+    }, 40);
+}
+
+function startDolls() {
     setInterval(() => {
-        const now = new Date().getTime();
-        const diff = targetDate - now;
+        const doll = document.createElement("div");
+        doll.className = "doll";
+        doll.innerText = "🧸";
+        doll.style.left = Math.random()*100+"vw";
+        doll.style.animationDuration = (12 + Math.random()*8)+"s";
+        document.body.appendChild(doll);
+        setTimeout(()=>doll.remove(),20000);
+    }, 1200);
+}
 
-        if (diff > 0) {
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const m = Math.floor((diff / (1000 * 60)) % 60);
-            const s = Math.floor((diff / 1000) % 60);
-            document.getElementById("countdown").innerText =
-                `${d} Hari ${h} Jam ${m} Menit ${s} Detik`;
-        }
-    }, 1000);
-
-    // HEARTS AFTER VIDEO
-    const video = document.getElementById("video");
-    video.onended = () => {
-        document.getElementById("surprise").scrollIntoView({behavior:"smooth"});
-        for (let i = 0; i < 30; i++) {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerText = "🤍";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 6000);
-        }
-    };
+// MUSIC FADE DURING VIDEO
+const video = document.getElementById("video");
+video.onplay = ()=>document.getElementById("bgMusic").volume = 0.15;
+video.onended = ()=>document.getElementById("bgMusic").volume = 0.35;
 </script>
 
 </body>
