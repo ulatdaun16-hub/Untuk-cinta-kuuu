@@ -37,11 +37,12 @@ button {
     background: #f4a3b5;
     color: #6b2138;
     border: none;
-    padding: 12px 30px;
+    padding: 12px 32px;
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -127,8 +128,11 @@ input {
 </div>
 
 <!-- WELCOME -->
-<section id="welcome">
+<section id="welcome" class="center">
     <h1>Selamat datang di tempat paling aman 🤍</h1>
+    <button id="playMusicBtn" onclick="playMusic()" style="display:none;">
+        Mulai pelan-pelan 🤍
+    </button>
 </section>
 
 <!-- VIDEO -->
@@ -162,15 +166,19 @@ function checkPassword() {
         sections.forEach((id,i)=>{
             setTimeout(()=>document.getElementById(id).style.display="block", i*900);
         });
-
-        const music = document.getElementById("bgMusic");
-        music.volume = 0.35;
-        music.play();
-
+        document.getElementById("playMusicBtn").style.display = "inline-block";
         startDolls();
     } else {
-        document.getElementById("error").innerText = "Coba ingat lagi tanggal spesial kita 🤍";
+        document.getElementById("error").innerText =
+            "Coba ingat lagi tanggal spesial kita 🤍";
     }
+}
+
+function playMusic() {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.35;
+    music.play();
+    document.getElementById("playMusicBtn").style.display = "none";
 }
 
 const messages = [
@@ -232,7 +240,7 @@ function startDolls() {
     }, 1200);
 }
 
-// MUSIC FADE DURING VIDEO
+// MUSIC FADE WHEN VIDEO
 const video = document.getElementById("video");
 video.onplay = ()=>document.getElementById("bgMusic").volume = 0.15;
 video.onended = ()=>document.getElementById("bgMusic").volume = 0.35;
