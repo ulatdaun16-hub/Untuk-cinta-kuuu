@@ -37,16 +37,23 @@ button {
     background: #f4a3b5;
     color: #6b2138;
     border: none;
-    padding: 12px 32px;
+    padding: 14px 34px;
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-button:hover {
-    background: #f28aa4;
+/* 🔔 KEDIP */
+.pulse {
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,163,181,0.6); }
+    70% { transform: scale(1.07); box-shadow: 0 0 0 18px rgba(244,163,181,0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,163,181,0); }
 }
 
 /* PASSWORD */
@@ -70,7 +77,6 @@ input {
 
 .error {
     color: #9b1c31;
-    margin-top: 10px;
 }
 
 /* MESSAGE */
@@ -79,13 +85,11 @@ input {
     padding: 30px;
     border-radius: 20px;
     line-height: 1.9;
-    font-size: 16px;
 }
 
 /* ENDING */
 .ending {
     margin-top: 60px;
-    font-size: 16px;
     opacity: 0;
     animation: fadeIn 6s forwards;
 }
@@ -94,18 +98,18 @@ input {
     to { opacity: 1; }
 }
 
-/* DOLLS */
+/* 🧸 BONEKA GEDE */
 .doll {
     position: fixed;
-    top: -40px;
-    font-size: 28px;
+    top: -80px;
     animation: fall linear forwards;
-    opacity: 0.7;
+    opacity: 0.75;
+    pointer-events: none;
 }
 
 @keyframes fall {
     to {
-        transform: translateY(110vh);
+        transform: translateY(110vh) rotate(8deg);
         opacity: 0;
     }
 }
@@ -114,7 +118,6 @@ input {
 
 <body>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
     <source src="piano.mp3" type="audio/mpeg">
 </audio>
@@ -123,15 +126,18 @@ input {
 <div id="passwordPage">
     <h2>Masukkan tanggal jadian kita 🤍</h2>
     <input id="passwordInput" placeholder="30 Desember 2026">
-    <button onclick="checkPassword()">Masuk</button>
+    <button class="pulse" onclick="checkPassword()">Masuk</button>
     <div id="error" class="error"></div>
 </div>
 
 <!-- WELCOME -->
 <section id="welcome" class="center">
-    <h1>Selamat datang di tempat paling aman 🤍</h1>
-    <button id="playMusicBtn" onclick="playMusic()" style="display:none;">
-        Mulai pelan-pelan 🤍
+    <h1>Selamat datang 🤍</h1>
+    <button id="playMusicBtn" class="pulse" onclick="playMusic()" style="display:none;">
+        Putar musik dulu 🎹
+    </button><br>
+    <button id="touchBtn" class="pulse" onclick="goNext()" style="display:none;">
+        Sentuh aku 🤍
     </button>
 </section>
 
@@ -139,111 +145,97 @@ input {
 <section id="videoSection" class="center">
     <video id="video" width="100%" controls>
         <source src="video-valentine.mp4" type="video/mp4">
-    </video>
+    </video><br>
+    <button id="hugBtn" class="pulse" onclick="showMessage()" style="display:none;">
+        Peluk aku 🧸
+    </button>
 </section>
 
 <!-- MESSAGE -->
 <section id="message" class="center">
-    <button id="openBtn" onclick="startMessages()">Aku punya sesuatu 🤍</button>
-    <div id="typing" class="message" style="display:none;"></div>
+    <div id="typing" class="message"></div>
 
     <div class="ending">
-        Aku nggak janji dunia akan selalu baik.<br>
+        Aku nggak janji dunia selalu baik.<br>
         Tapi aku janji,<br>
-        kamu nggak akan sendirian 🤍
+        kamu nggak sendirian 🤍
     </div>
 </section>
 
 <script>
-const sections = ["welcome","videoSection","message"];
-
 function checkPassword() {
     const input = document.getElementById("passwordInput").value.toLowerCase();
-    const correct = ["30 desember 2026","30-12-2026"];
-
-    if (correct.includes(input)) {
-        document.getElementById("passwordPage").style.display = "none";
-        sections.forEach((id,i)=>{
-            setTimeout(()=>document.getElementById(id).style.display="block", i*900);
-        });
-        document.getElementById("playMusicBtn").style.display = "inline-block";
+    if (input === "30 desember 2026" || input === "30-12-2026") {
+        passwordPage.style.display = "none";
+        welcome.style.display = "block";
+        playMusicBtn.style.display = "inline-block";
+        touchBtn.style.display = "inline-block";
         startDolls();
     } else {
-        document.getElementById("error").innerText =
-            "Coba ingat lagi tanggal spesial kita 🤍";
+        error.innerText = "Tanggal ini harusnya kamu ingat 🤍";
     }
 }
 
 function playMusic() {
-    const music = document.getElementById("bgMusic");
-    music.volume = 0.35;
-    music.play();
-    document.getElementById("playMusicBtn").style.display = "none";
+    bgMusic.volume = 0.35;
+    bgMusic.play();
+    playMusicBtn.style.display = "none";
+}
+
+function goNext() {
+    welcome.style.display = "none";
+    videoSection.style.display = "block";
+    hugBtn.style.display = "inline-block";
 }
 
 const messages = [
-"Terima kasih ya, kamu selalu ada di setiap langkahku, bahkan di saat aku lagi capek sama dunia.",
+"Terima kasih ya, sudah bertahan sejauh ini.",
 "",
-"Kehadiranmu itu sederhana, tapi rasanya selalu bikin tenang.",
+"Aku tahu dunia sering nggak adil sama kamu.",
 "",
-"Mungkin aku nggak selalu bilang, tapi aku bersyukur banget punya kamu.",
+"Tapi di sini, kamu aman.",
 "",
-"Kalau dunia terasa terlalu ramai dan melelahkan buat kamu…",
+"Kalau capek, istirahatlah.",
 "",
-"Pulanglah.",
-"",
-"Aku akan selalu jadi tempatmu kembali.",
-"",
-"Di pundakku kamu boleh rapuh.",
-"",
-"Di dekatku kamu nggak perlu pura-pura kuat.",
-"",
-"Selama kamu masih mau melangkah, aku akan tetap di sini 🤍"
+"Aku ada 🤍"
 ];
 
-let msgIndex = 0;
-
-function startMessages() {
-    document.getElementById("openBtn").style.display = "none";
-    const box = document.getElementById("typing");
-    box.style.display = "block";
-    showMessage();
+let i = 0;
+function showMessage() {
+    videoSection.style.display = "none";
+    message.style.display = "block";
+    typeMessage();
 }
 
-function showMessage() {
-    if (msgIndex >= messages.length) return;
-    const box = document.getElementById("typing");
-    box.innerHTML = "";
-    let text = messages[msgIndex];
-    let i = 0;
-
-    const typing = setInterval(() => {
-        box.innerHTML += text.charAt(i);
-        i++;
-        if (i >= text.length) {
-            clearInterval(typing);
-            msgIndex++;
-            setTimeout(showMessage, 1800);
+function typeMessage() {
+    if (i >= messages.length) return;
+    let text = messages[i];
+    let j = 0;
+    typing.innerHTML = "";
+    const interval = setInterval(() => {
+        typing.innerHTML += text.charAt(j);
+        j++;
+        if (j >= text.length) {
+            clearInterval(interval);
+            i++;
+            setTimeout(typeMessage, 1600);
         }
     }, 40);
 }
 
+/* 🧸 BONEKA */
 function startDolls() {
     setInterval(() => {
         const doll = document.createElement("div");
         doll.className = "doll";
-        doll.innerText = "🧸";
+        doll.innerText = ["🧸","🎀","🤍"][Math.floor(Math.random()*3)];
         doll.style.left = Math.random()*100+"vw";
-        doll.style.animationDuration = (12 + Math.random()*8)+"s";
+        doll.style.fontSize = (48 + Math.random()*30)+"px";
+        doll.style.animationDuration = (14 + Math.random()*10)+"s";
         document.body.appendChild(doll);
-        setTimeout(()=>doll.remove(),20000);
-    }, 1200);
+        setTimeout(()=>doll.remove(),22000);
+    }, 1000);
 }
-
-// MUSIC FADE WHEN VIDEO
-const video = document.getElementById("video");
-video.onplay = ()=>document.getElementById("bgMusic").volume = 0.15;
-video.onended = ()=>document.getElementById("bgMusic").volume = 0.35;
 </script>
 
 </body>
